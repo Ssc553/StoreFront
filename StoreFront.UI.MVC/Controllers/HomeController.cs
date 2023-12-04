@@ -18,7 +18,50 @@ namespace StoreFront.UI.MVC.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+
+
+		public IActionResult Shop()
+
+		{
+			return View();
+		}
+
+		public IActionResult AboutUs()
+		{
+			return View();
+		}
+
+		public IActionResult Services()
+		{
+			return View();
+		}
+		public IActionResult Blog()
+		{
+			return View();
+		}
+        public IActionResult ThankYou()
+        {
+            return View();
+        }
+
+		public IActionResult Cart()
+		{
+			return View();
+		}
+		public IActionResult ContactUs()
+		{
+			return View();
+		}
+
+		public IActionResult CheckOut()
+		{
+			return View();
+		}
+
+
+
+
+		public IActionResult Privacy()
         {
             return View();
         }

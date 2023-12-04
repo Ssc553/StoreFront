@@ -1,0 +1,87 @@
+﻿@model IEnumerable<StoreFront.DATA.EF.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@* Step6 *@
+<div class="row">
+    <div class="mx-auto col-md-6">
+        <div id="MessageContent" class="text-center">
+        </div>
+    </div>
+</div>
+
+<table class="table" id="CategoriesTable">
+    <thead>
+        <tr class="text-light">
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr id="Category-@item.ItemCategoryId" class="text-light">
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+            <td>
+                    <a class="text-light" asp-action="Edit" asp-route-id="@item.ItemCategoryId">Edit</a> |
+                    <a class="text-light"  asp-action="Details" asp-route-id="@item.ItemCategoryId">Details</a> |
+                    <a class="text-light"
+                        data-ajax="true"
+                       data-ajax-confirm="Are you sure you want to delete @item.CategoryName?"
+                       href="~/Categories/AjaxDelete/@item.ItemCategoryId"
+                       data-ajax-failure="deleteFailed"
+                       data-ajax-success="deleteConfirmed"
+                       data-ajax-method="POST">
+                        Delete
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 
+
+@section Scripts {
+
+    <script>
+        //#region Step 08 - AJAX DELETE
+        function deleteConfirmed(response) {
+            //remove the row from the table.
+            let rowId = '#Category-' + response.id;
+            console.log(rowId);
+            $('#CategoriesTable').find(rowId).remove();
+            //display status message
+            $('#MessageContent').removeClass().addClass('alert alert-success text-center').text(response.message);
+        }
+        function deleteFailed(response) {
+            $('#MessageContent').removeClass().addClass('alert alert-danger text-center').text('Delete unsuccessful.');
+        }
+
+
+    </script>
+    
+
+
+
+}

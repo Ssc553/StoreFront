@@ -1,0 +1,115 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList; 
+
+
+@model IEnumerable<StoreFront.DATA.EF.Models.Item>
+
+
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="text-light" asp-action="Create">Create New</a>
+</p>
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequiredLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxStackSize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsUnique)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSetItem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSocketed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rarity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemsInStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Server)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequiredLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxStackSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsUnique)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSetItem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSocketed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rarity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemCategory.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemType.ItemTypeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Server.ModeName)
+            </td>
+            <td class="text-light">
+                <a class="text-light" asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
+                    <a class="text-light" asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
+                    <a class="text-light" asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
+            </td>
+                <td class="options">
+                    
+                    <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ItemId" class="option2">
+                        Add To Cart
+                    </a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

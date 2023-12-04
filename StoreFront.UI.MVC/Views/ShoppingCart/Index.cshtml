@@ -1,0 +1,90 @@
+﻿@model Dictionary<int, StoreFront.UI.MVC.Models.CartItemViewModel>
+
+@{
+    ViewData["Title"] = "Cart";
+}
+<section class="product_section layout_padding">
+    <div class="container">
+        <div class="heading_center heading_container"
+            <h2>Your <span>Cart</span></h2>
+            <p align="center">
+                <a asp-action="Index" asp-controller="Items" class="btn btn-info">
+                    Back to Shopping
+                </a>
+            </p>
+        </div>
+        @if (!Model.Any())
+        {
+            <p class="alert alert-warning text-center">
+                @ViewBag.Message
+            </p>
+
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Values)
+                    {
+                        <tr>
+                           @*  <td>
+                                <img src="~/images/t_@item.Item.ItemImage">
+                            </td> *@
+                            <td>
+                                @* @Html.DisplayFor(modelItem => item.Qty)
+                        <input type="button" value="Update Cart" class="btn btn-primary" /> *@
+                                <form asp-action="UpdateCart">
+                                    <input type="hidden" name="itemId" value="@item.Item.ItemId">
+                                    <input type="number" value="@item.Qty" name="qty" min="0" class="form-control mx-auto text-center w-50">
+                                    <button type="submit" class=" btn btn-primary btn-sm col-md-6 offset-3">Update Cart</button>
+                                </form>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Item.Price)
+                            </td>
+                            <td>
+                                @($"{item.Qty * item.Item.Price:c}")
+                            </td>
+                            <td>
+                                @* <a href="#" class="btn btn-danger">Remove From Cart</a> *@
+                                <a asp-action="RemoveFromCart" asp-route-id="@item.Item.ItemId" class="btn btn-danger">Remove From Cart</a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+            <div class="alert alert-success text-center">
+                <p>Your total before taxes and shipping is @($"{Model.Values.Sum(item => item.Qty * item.Item.Price):c}")</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <p>
+                        <a asp-action="SubmitOrder" class=" btn btn-primary">Submit Order</a>
+                    </p>
+                    <p>
+                        <a asp-action="Checkout" class=" btn btn-primary">Checkout</a>
+                    </p>
+
+                }
+                else
+                {
+                    <p>Please log in to place this order.</p>
+                }
+
+            </div>
+        }
+    </div>
+</section>
