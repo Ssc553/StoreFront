@@ -11,8 +11,8 @@ namespace StoreFront.DATA.EF.Models
         }
 
         public int ItemTypeId { get; set; }
-        public string ItemTypeName{ get; set; } = null!;
+        public string ItemTypeName { get; set; } = null!;
 
-        public virtual ICollection<Item>? Items { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

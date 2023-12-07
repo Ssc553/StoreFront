@@ -6,6 +6,18 @@
 */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
+
+button #buttonCart {
+    background: #3b5d50;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 2.5rem; /* Footer height */
+}
+
 table {
     color: white;
 }

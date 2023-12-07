@@ -204,7 +204,7 @@ namespace StoreFront.UI.MVC.Controllers
                 {
                     OrderId = o.OrderId,
                     ItemId = item.Item.ItemId,
-                    ItemPrice = item.Item.Price,
+                    ItemPrice = (decimal)item.Item.Price,
                     Quantity = (short)item.Qty
                 };
 
@@ -268,7 +268,7 @@ namespace StoreFront.UI.MVC.Controllers
                 {
                     OrderId = o.OrderId,
                     ItemId = item.Item.ItemId,
-                    ItemPrice = item.Item.Price,
+                    ItemPrice = (decimal)item.Item.Price,
                     Quantity = (short)item.Qty
                 };
 

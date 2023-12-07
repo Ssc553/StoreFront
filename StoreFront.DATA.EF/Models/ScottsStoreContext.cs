@@ -35,7 +35,7 @@ namespace StoreFront.DATA.EF.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;database=ScottsStore;trusted_connection=true;multipleactiveresultsets=true;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=ScottsStore;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
@@ -148,6 +148,10 @@ namespace StoreFront.DATA.EF.Models
 
                 entity.Property(e => e.ItemCategoryId).HasColumnName("ItemCategoryID");
 
+                entity.Property(e => e.ItemImage)
+                    .HasMaxLength(75)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ItemTypeId).HasColumnName("ItemTypeID");
 
                 entity.Property(e => e.Name).HasMaxLength(50);
@@ -181,9 +185,7 @@ namespace StoreFront.DATA.EF.Models
             {
                 entity.Property(e => e.ItemTypeId).HasColumnName("ItemTypeID");
 
-                entity.Property(e => e.ItemTypeName)
-                    .HasMaxLength(50)
-                    .HasColumnName("ItemTypeName");
+                entity.Property(e => e.ItemTypeName).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Order>(entity =>

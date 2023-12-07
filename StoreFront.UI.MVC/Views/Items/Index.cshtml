@@ -13,10 +13,34 @@
 }
 
 <h1>Index</h1>
-
+  @if (User.IsInRole("Admin"))
+                {
 <p>
-    <a class="text-light" asp-action="Create">Create New</a>
+    <a class="text-light btn btn-mute" asp-action="Create">Create New</a>
 </p>
+                }
+
+<div class="col-md-6 offset-3">
+    <form asp-action="Index" method="get">
+        <!--url.com/page?param=value&parm2=value2-->
+        <label for="categoryId" class="control-label d-block text-center">Category</label>
+        <select name="categoryId" class="form-control text-center mb-3" asp-items="@ViewBag.CategoryId">
+            <option value="0">[Choose a Category]</option>
+        </select>
+        <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control text-center" placeholder="Search Shop." />
+        <button type="submit" class="btn btn-primary text-center d-block w-50 mx-auto ">GO!</button>
+        <a asp-action="Index" class="btn btn-secondary d-block mx-auto w-50 mt-2">Clear</a>
+    </form>
+    @if (ViewBag.NbrResults != null)
+    {
+        <p class="mt-5 p-2 alert-warning text-center">
+            Showing @ViewBag.NbrResults result@(ViewBag.NbrResults == 1 ? "" : "s") for '@ViewBag.SearchTerm'...
+        </p>
+    }
+</div>
+
+<br />
+<br />
 <table class="table text-light">
     <thead>
         <tr>
@@ -26,7 +50,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.RequiredLevel)
             </th>
-            <th>
+          @*   <th>
                 @Html.DisplayNameFor(model => model.MaxStackSize)
             </th>
             <th>
@@ -40,7 +64,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rarity)
-            </th>
+            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.ItemsInStock)
             </th>
@@ -56,7 +80,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Server)
             </th>
-            <th></th>
+              <th>@Html.DisplayNameFor(model => model.ItemImage)</th>  
         </tr>
     </thead>
     <tbody>
@@ -68,7 +92,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RequiredLevel)
             </td>
-            <td>
+           @*  <td>
                 @Html.DisplayFor(modelItem => item.MaxStackSize)
             </td>
             <td>
@@ -82,7 +106,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Rarity)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.ItemsInStock)
             </td>
@@ -98,18 +122,33 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Server.ModeName)
             </td>
+            <td>
+                     @Html.DisplayNameFor(model => model.ItemImage)  
+            </td>
             <td class="text-light">
                 <a class="text-light" asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
                     <a class="text-light" asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
                     <a class="text-light" asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
             </td>
                 <td class="options">
-                    
-                    <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ItemId" class="option2">
+                    <button class = "btn btn-secondary">
+                        <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ItemId" class="option2" id="buttonCart">
                         Add To Cart
-                    </a>
+                        </a>
+                        </button>
                 </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        //let table = new DataTable('table');
+        $(document).ready(function () {
+            $('table').DataTable();
+        });
+    </script>
+
+}
+

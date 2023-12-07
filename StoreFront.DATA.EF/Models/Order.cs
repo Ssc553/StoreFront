@@ -18,7 +18,7 @@ namespace StoreFront.DATA.EF.Models
         public string ShipAccountName { get; set; } = null!;
         public string ShipAccountCountry { get; set; } = null!;
 
-        public virtual User? User { get; set; } = null!;
-        public virtual ICollection<OrderDetail>? OrderDetails { get; set; }
+        public virtual User User { get; set; } = null!;
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

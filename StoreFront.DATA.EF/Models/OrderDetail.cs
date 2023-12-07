@@ -12,7 +12,7 @@ namespace StoreFront.DATA.EF.Models
         public float Discount { get; set; }
         public int OrderDetailsId { get; set; }
 
-        public virtual Item? Item { get; set; } = null!;
-        public virtual Order? Order { get; set; } = null!;
+        public virtual Item Item { get; set; } = null!;
+        public virtual Order Order { get; set; } = null!;
     }
 }

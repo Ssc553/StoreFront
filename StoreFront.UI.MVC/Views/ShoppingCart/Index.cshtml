@@ -6,7 +6,7 @@
 <section class="product_section layout_padding">
     <div class="container">
         <div class="heading_center heading_container"
-            <h2>Your <span>Cart</span></h2>
+            <h2 class="text-light">Your <span class="text-light">Cart</span></h2>
             <p align="center">
                 <a asp-action="Index" asp-controller="Items" class="btn btn-info">
                     Back to Shopping
@@ -25,15 +25,15 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Total</th>
+                        <th class ="text-light">Product</th>
+                        <th class ="text-light">Quantity</th>
+                        <th class ="text-light">Name</th>
+                        <th class ="text-light">Price</th>
+                        <th class ="text-light">Total</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="text-light">
                     @foreach (var item in Model.Values)
                     {
                         <tr>
@@ -60,7 +60,7 @@
                             </td>
                             <td>
                                 @* <a href="#" class="btn btn-danger">Remove From Cart</a> *@
-                                <a asp-action="RemoveFromCart" asp-route-id="@item.Item.ItemId" class="btn btn-danger">Remove From Cart</a>
+                                <a asp-action="RemoveFromCart" asp-route-id="@item.Item.ItemId" id="buttonRemove" class="btn btn-danger">Remove From Cart</a>
                             </td>
                         </tr>
 
