@@ -25,9 +25,9 @@ namespace StoreFront.DATA.EF.Models
         public decimal? Price { get; set; }
         public string? ItemImage { get; set; }
 
-        public virtual Category ItemCategory { get; set; } = null!;
-        public virtual ItemType ItemType { get; set; } = null!;
-        public virtual ServerMode Server { get; set; } = null!;
+        public virtual Category? ItemCategory { get; set; } = null!;
+        public virtual ItemType? ItemType { get; set; } = null!;
+        public virtual ServerMode? Server { get; set; } = null!;
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

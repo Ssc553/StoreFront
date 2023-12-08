@@ -18,7 +18,7 @@
     <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
     <None Include="Views\Shared\OriginalLayout.cshtml" />
-    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="C:\Users\Student\Documents\Visual Studio 2022\Projects\01_FUI\_Layout.cshtml" Link="_Layout.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />

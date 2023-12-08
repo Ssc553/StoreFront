@@ -6,12 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StoreFront.DATA.EF.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Drawing;//added for file upload
+
+//using X.PagedList;
 
 namespace StoreFront.UI.MVC.Controllers
 {
     public class ItemsController : Controller
     {
         private readonly ScottsStoreContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public ItemsController(ScottsStoreContext context)
         {
@@ -65,7 +70,7 @@ namespace StoreFront.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ItemId,ItemTypeId,Name,RequiredLevel,MaxStackSize,IsUnique,IsSetItem,IsSocketed,Rarity,ItemCategoryId,ServerId,ItemsInStock,Price")] Item item)
+        public async Task<IActionResult> Create([Bind("ItemId,ItemTypeId,Name,RequiredLevel,MaxStackSize,IsUnique,IsSetItem,IsSocketed,Rarity,ItemCategoryId,ServerId,ItemsInStock,Price,ItemImage")] Item item)
         {
             if (ModelState.IsValid)
             {
