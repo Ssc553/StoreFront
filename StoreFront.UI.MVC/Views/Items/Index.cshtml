@@ -1,5 +1,5 @@
 ﻿@using X.PagedList.Mvc.Core;
-@using X.PagedList; 
+@using X.PagedList;
 
 
 @model IEnumerable<StoreFront.DATA.EF.Models.Item>
@@ -12,135 +12,138 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-  @if (User.IsInRole("Admin"))
+
+@if (User.IsInRole("Admin"))
+{
+
+    <div class="container">
+        <center class="text-center mt-3">
+            <a class="text-light btn btn-mute w-25" asp-action="Create">Create New Item</a>
+        </center>
+    </div>
+
+}
+
+
+
+<br />
+<br />
+<center class="th">
+    <table class="table text-light col-md-6 ">
+        <thead class="th">
+
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RequiredLevel)
+                </th>
+                @*   <th>
+                @Html.DisplayNameFor(model => model.MaxStackSize)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.IsUnique)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.IsSetItem)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.IsSocketed)
+                </th>
+                <th>
+                @Html.DisplayNameFor(model => model.Rarity)
+                </th> *@
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemsInStock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemCategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Server)
+                </th>
+                  @if (User.IsInRole("Admin"))
                 {
-<p>
-    <a class="text-light btn btn-mute" asp-action="Create">Create New</a>
-</p>
+                    <th></th>
                 }
 
-<div class="col-md-2 offset-3">
-    <form asp-action="Index" method="get">
-        <!--url.com/page?param=value&parm2=value2-->
-        <label for="categoryId" class="control-label d-block text-center">Category</label>
-        <select name="categoryId" class="form-control text-center mb-3" asp-items="@ViewBag.CategoryId">
-            <option value="0">[Choose a Category]</option>
-        </select>
-        <input type="text" name="searchTerm" value="@ViewBag.SearchTerm" class="form-control text-center" placeholder="Search Shop." />
-        <button type="submit" class="btn btn-primary text-center d-block w-50 mx-auto ">GO!</button>
-        <a asp-action="Index" class="btn btn-secondary d-block mx-auto w-50 mt-2">Clear</a>
-    </form>
-    @if (ViewBag.NbrResults != null)
-    {
-        <p class="mt-5 p-2 alert-warning text-center">
-            Showing @ViewBag.NbrResults result@(ViewBag.NbrResults == 1 ? "" : "s") for '@ViewBag.SearchTerm'...
-        </p>
-    }
-</div>
-
-<br />
-<br />
-<table class="table text-light">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RequiredLevel)
-            </th>
-          @*   <th>
-                @Html.DisplayNameFor(model => model.MaxStackSize)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsUnique)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsSetItem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsSocketed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rarity)
-            </th> *@
-            <th>
-                @Html.DisplayNameFor(model => model.ItemsInStock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemCategory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Server)
-            </th>
-              <th>@Html.DisplayNameFor(model => model.ItemImage)</th>  
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequiredLevel)
-            </td>
-           @*  <td>
-                @Html.DisplayFor(modelItem => item.MaxStackSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsUnique)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsSetItem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsSocketed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rarity)
-            </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemsInStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemCategory.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemType.ItemTypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Server.ModeName)
-            </td>
-            <td>
-                     @Html.DisplayNameFor(model => model.ItemImage)  
-            </td>
-            <td class="text-light">
-                <a class="text-light" asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
-                    <a class="text-light" asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
-                    <a class="text-light" asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
-            </td>
-                <td class="options">
-                    <button class = "btn btn-secondary">
-                        <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ItemId" class="option2" id="buttonCart">
-                        Add To Cart
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" class="text-warning h3" asp-route-id="@item.ItemId">
+                            @Html.DisplayFor(modelItem => item.Name)
                         </a>
-                        </button>
+                    </td>
+                    @* <td>
+                @Html.DisplayFor(modelItem => item.Name)
+                </td> *@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RequiredLevel)
+                    </td>
+                    @*  <td>
+                @Html.DisplayFor(modelItem => item.MaxStackSize)
                 </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <td>
+                @Html.DisplayFor(modelItem => item.IsUnique)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.IsSetItem)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.IsSocketed)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.Rarity)
+                </td> *@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemsInStock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemCategory.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemType.ItemTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Server.ModeName)
+                    </td>
+                  
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td class="text-light">
+                            <a class="text-light" asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
+                            <a class="text-light" asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
+                            <a class="text-light" asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
+                        </td>
+                    }
+                    <td class="options">
+                        <button class="btn btn-secondary">
+                            <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ItemId" class="option2" id="buttonCart">
+                                Add To Cart
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</center>
 
 @section Scripts{
     <script>

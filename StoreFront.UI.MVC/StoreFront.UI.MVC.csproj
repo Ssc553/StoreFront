@@ -46,4 +46,8 @@
     <ProjectReference Include="..\StoreFront.DATA.EF\StoreFront.DATA.EF.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="_Archive\scss\" />
+  </ItemGroup>
+
 </Project>

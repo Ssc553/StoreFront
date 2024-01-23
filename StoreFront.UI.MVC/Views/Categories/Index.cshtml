@@ -41,13 +41,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
-            <td>
+             <td>
                 @Html.DisplayFor(modelItem => item.Picture)
-            </td>
+            </td> 
             <td>
                     <a class="text-light" asp-action="Edit" asp-route-id="@item.ItemCategoryId">Edit</a> |
                     <a class="text-light"  asp-action="Details" asp-route-id="@item.ItemCategoryId">Details</a> |
-                    <a class="text-light"
+                    @* <a class="text-light" asp-action="Delete" asp-route-id="@item.ItemCategoryId">Delete</a> *@
+                    
+                     <a class="text-light btn btn-danger"
                         data-ajax="true"
                        data-ajax-confirm="Are you sure you want to delete @item.CategoryName?"
                        href="~/Categories/AjaxDelete/@item.ItemCategoryId"
@@ -55,14 +57,14 @@
                        data-ajax-success="deleteConfirmed"
                        data-ajax-method="POST">
                         Delete
-                    </a>
+                    </a> 
             </td>
         </tr>
 }
     </tbody>
 </table> 
 
-@section Scripts {
+ @section Scripts {
 
     <script>
         //#region Step 08 - AJAX DELETE
@@ -85,3 +87,4 @@
 
 
 }
+ 

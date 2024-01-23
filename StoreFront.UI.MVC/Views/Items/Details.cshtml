@@ -6,85 +6,84 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Item</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RequiredLevel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RequiredLevel)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaxStackSize)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaxStackSize)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsUnique)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsUnique)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsSetItem)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsSetItem)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsSocketed)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsSocketed)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rarity)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rarity)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemsInStock)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ItemsInStock)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemCategory)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ItemCategory.CategoryName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ItemType.ItemTypeName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Server)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Server.ModeName)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ItemId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        <center>
+    <div class="col-md-3 text-light">
+        <h2>@Model.Name <span>Details</span></h2>
+        <hr />
+            <dl class="row ms-4">
+               
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RequiredLevel)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RequiredLevel)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MaxStackSize)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MaxStackSize)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsUnique)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsUnique)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsSetItem)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsSetItem)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.IsSocketed)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.IsSocketed)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Rarity)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Rarity)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ItemsInStock)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ItemsInStock)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ItemCategory)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ItemCategory.CategoryName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ItemType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ItemType.ItemTypeName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Server)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Server.ModeName)
+                </dd>
+        </dl>
+        
+    </div>
+    <div >
+        <a asp-action="Edit" class=" text-light btn btn-outline-secondary" asp-route-id="@Model?.ItemId">Edit</a> |||
+        <a asp-action="Index" class=" btn btn-secondary">Back to List</a>
+    </div>
+    </center>
+

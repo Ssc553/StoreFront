@@ -362,10 +362,15 @@ a {
 
 .feature {
 	margin-bottom: 30px;
+
 	.icon {
 		display: inline-block;
+		background-color: rgb(124, 122, 122);
 		position: relative;
 		margin-bottom: 20px;
+
+
+
 
 		&:before {
 			content: "";
@@ -376,17 +381,21 @@ a {
 			border-radius: 50%;
 			right: -8px;
 			bottom: 0;
+			background-color: rgb(124, 122, 122);
 		}
-
 	}
+
 	h3 {
 		font-size: 14px;
 		color: $dark;
+		background-color: rgb(124, 122, 122);
 	}
+
 	p {
 		font-size: 14px;
 		line-height: 22px;
-		color: $body_color;
+		color: white;
+		
 	}
 }
 

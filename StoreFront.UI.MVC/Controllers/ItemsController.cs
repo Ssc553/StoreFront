@@ -28,6 +28,8 @@ namespace StoreFront.UI.MVC.Controllers
         {
             var scottsStoreContext = _context.Items.Include(i => i.ItemCategory).Include(i => i.ItemType).Include(i => i.Server);
             return View(await scottsStoreContext.ToListAsync());
+
+
         }
 		public async Task<IActionResult> TiledIndex()
 		{

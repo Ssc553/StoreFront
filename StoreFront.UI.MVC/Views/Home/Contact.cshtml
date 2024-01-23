@@ -13,39 +13,40 @@
 }
 <section class="product_section gray-section pb-4 pt-4 mb-4">
     <div class="heading_container heading_center">
-        <h2>
-            Contact <span>Us</span>
+        <h2 class ="col-md-2 text-light mx-auto">
+            Contact <span>Us!</span>
         </h2>
     </div>
 </section>
 
 <div class="row mb-3">
-    <div class="col-md-6 offset-3">
+    <div class="col-md-2 mx-auto">
         <form asp-action="Contact">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <label asp-for="Name" class="control-label"></label>
+                <div class="text-light">Name</div>
                 <input asp-for="Name" class="form-control" />
                 <div class="text-danger text-center mb-3">
                     <span asp-validation-for="Name"></span>
                 </div>
             </div>
             <div class="form-floating">
-                <label asp-for="Email" class="control-label"></label>
+                <div class="text-light">Email</div>
                 <input asp-for="Email" class="form-control" />
                 <div class="text-danger text-center mb-3">
                     <span asp-validation-for="Email"></span>
                 </div>
             </div>
             <div class="form-floating">
-                <label asp-for="Subject" class="control-label"></label>
+                <div class="text-light">Subject</div>
                 <input asp-for="Subject" class="form-control" />
                 <div class="text-danger text-center mb-3">
                     <span asp-validation-for="Subject" placeholder="Subject"></span>
                 </div>
             </div>
             <div class="form-floating">
-                <label asp-for="Message" class="control-label"></label>
+                <div class="text-light">Message</div>
+                @* <label asp-for="Message" class="control-label"></label> *@
                 <textarea asp-for="Message" class="form-control"></textarea>
                 <div class="text-danger text-center mb-3">
                     <span asp-validation-for="Message"></span>
